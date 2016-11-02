@@ -12,3 +12,10 @@ client.set('hello3',{a:1});
 client.get('hello3',function(err,v) {
 	console.log('hello3 = ', v);	//hello3 =  [object Object]
 });
+
+client.set('hello4', JSON.stringify({a:1}));
+client.get('hello4',(err,v) => {
+	console.log(v);		//{"a":1}
+	var obj = JSON.parse(v);
+	console.log(obj.a);	//1
+})
